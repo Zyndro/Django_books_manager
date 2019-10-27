@@ -25,7 +25,7 @@ SECRET_KEY = '*899j(_i0d&ef!trt6*fu32hm7-yeo3=871m=62%79y(5hu1f-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stxbookstoredjango.herokuapp.com']
 
 
 # Application definition
