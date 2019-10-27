@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<input type="submit" value="Add book"
+    onclick="window.location='add/book/';" />
+<input type="submit" value="Import book"
+    onclick="window.location='import/book/';" />
+
+<form method="GET" action="">
+    <input type="text" name="title" placeholder="title"/><br>
+    <input type="text" name="author" placeholder="author"/><br>
+    <input type="text" name="language" placeholder="language"/><br>
+    <input type="number" name="startyear" placeholder="relaseyear start"/>
+    <input type="number" name="endyear" placeholder="relaseyear end"/><br>
+    <input type="submit" value="Search"/>
+</form>
+{% for instance in object_list %}
+<p><b>Tytuł:</b> {{instance.title}} <b>Autorzy:</b> {{instance.authors}} <b>Język:</b> {{instance.language}} <b>rok wydania:</b> {{instance.publishedDate}}
+<b>Ilosc stron:</b> {{instance.pageCount}} <b>industryIdentifiers:</b> {{instance.industryIdentifiers}} <b>imagelinks:</b> {{instance.imageLinks}}</p></p>
+
+{% endfor %}
+<br>
+<br>
+<input type="submit" value="admin"
+    onclick="window.location='admin';" />
+
+</body>
+</html>
