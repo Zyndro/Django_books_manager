@@ -55,34 +55,26 @@ def google_import(request):
         for result in results:
             try:
                 book = {
-                    'title': result['volumeInfo']['title'],
-                    'authors': result['volumeInfo']['authors'],
-                    'publishedDate': result['volumeInfo']['publishedDate'],
-                    'industryIdentifiers': result['volumeInfo']['industryIdentifiers'],
-                    'pageCount': result['volumeInfo']['pageCount'],
-                    'imageLinks': result['volumeInfo']['imageLinks'],
-                    'language': result['volumeInfo']['language'],
-                }
-
-
+                        'title': result['volumeInfo']['title'],
+                        'authors': result['volumeInfo']['authors'],
+                        'publishedDate': result['volumeInfo']['publishedDate'],
+                        'industryIdentifiers': result['volumeInfo']['industryIdentifiers'],
+                        'pageCount': result['volumeInfo']['pageCount'],
+                        'imageLinks': result['volumeInfo']['imageLinks'],
+                        'language': result['volumeInfo']['language'],
+                        }
                 list.append(book)
                 counter += 1
             except KeyError:
                 pass
-
     if request.method == "POST":
         number = request.POST.get("number")
         try:
             form = BooksForm(list[int(number)-1])
             if form.is_valid():
-                book_item=form.save(commit=False)
+                book_item = form.save(commit=False)
                 book_item.save()
                 counter = "imported book nr:"+number
         except IndexError:
             counter="wrong index number"
-
-
-
-
-
     return render(request, 'book/book_import.html', {'r':list, 'counter':counter})
