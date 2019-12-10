@@ -6,6 +6,7 @@ class Books(models.Model):
 
     def __str__(self):
         return ("Title: " + self.title +" Author: "+self.authors)
+
     title = models.CharField(max_length=256)
     authors = models.CharField(max_length=256)
     publishedDate = models.CharField(max_length=20, default=1900)

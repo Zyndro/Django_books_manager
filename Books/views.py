@@ -1,9 +1,23 @@
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 from .forms import BooksForm
 from .models import Books
+from .serializers import BooksSerializer
 
+# booksapiall/
+class BookList(APIView):
+    def get(self,request):
+        books = Books.objects.all()
+        serializer = BooksSerializer(books, many=True)
+        return Response(serializer.data)
+
+
+    def post(self):
+        pass
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
